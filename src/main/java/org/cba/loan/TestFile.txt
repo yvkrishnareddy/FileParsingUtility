@@ -44,7 +44,7 @@ SZ  [record
                                     rem_seg_version "85"]
         rem_service               [record
                                     rem_api_processing  "978"
-                                    rem_psn_system "SAT"]
+                                    rem_psn_system "SAT"
                                     rem_rur_persistence "TA"]
         rem_prelim_dec_until_time "        "
         rem_prelim_dec_info       "    "]
@@ -54,4 +54,4 @@ SZ  [record
                                     rur_seg_version "658"]
         rur_numeric_001           [void 0xff 0xff 0xfe 0x00 0x00 0x00 0x00 0x00]
 		rur_numeric_002           [void 0xff 0xff 0xfe 0x00 0x00 0x00 0x00 0x00]
-        rur_30byte_string_001           "                              "]]SZ
+        rur_30byte_string_001           "                              "]]

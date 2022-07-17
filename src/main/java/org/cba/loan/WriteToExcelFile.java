@@ -12,14 +12,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class WriteToExcelFile extends KeyValuesFromFile{
-    public void writeToExcelFile(){
-        KeyValuesFromFile keyValuesFromFile = new KeyValuesFromFile();
-        try
-        {
-            ArrayList< ListOfPairs > map = keyValuesFromFile.addToListOfPairs();
+public class WriteToExcelFile extends KeyValuesFromFile {
+    public void writeToExcelFile(ArrayList < ListOfPairs > map) {
+
+        try {
             XSSFWorkbook workbook = new XSSFWorkbook();
-            XSSFSheet sheet = workbook.createSheet("KeyValues");// creating a blank sheet
+            XSSFSheet sheet = workbook.createSheet("KeyValues"); // creating a blank sheet
             XSSFCellStyle style = workbook.createCellStyle();
             XSSFFont font = workbook.createFont();
             font.setBold(true);
@@ -33,27 +31,23 @@ public class WriteToExcelFile extends KeyValuesFromFile{
             headerRow.createCell(1).setCellValue("Value");
             cell1.setCellStyle(style);
             int rowNum = 1;
-            for (ListOfPairs lop : map)
-            {
+            for (ListOfPairs lop: map) {
                 Row dataRows = sheet.createRow(rowNum++);
                 createList(lop, dataRows);
             }
 
             String outPutFilePath = "OutPut";
             String fileNameSuffix = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-            FileOutputStream out = new FileOutputStream(outPutFilePath+"/"+"KayValues_"+fileNameSuffix+".xlsx");
+            FileOutputStream out = new FileOutputStream(outPutFilePath + "/" + "KayValues_" + fileNameSuffix + ".xlsx");
             workbook.write(out);
             out.close();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
     // creating cells for each row
-    private static void createList(ListOfPairs lop, Row row)
-    {
+    private static void createList(ListOfPairs lop, Row row) {
         Cell cell = row.createCell(0);
         cell.setCellValue(lop.getL());
 
